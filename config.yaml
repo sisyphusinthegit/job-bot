@@ -1,7 +1,3 @@
-telegram:
-  bot_token: "7616042675:AAGf10TxZoIBLTUoBu4SecHl-aMuVFU5JiI"
-  chat_id: "7991654645"
-
 email:
   smtp_server: "smtp.gmail.com"
   smtp_port: 587
