@@ -1,21 +1,22 @@
-name: Daily Job Scraper  
+name: Daily Job Scraper
 
 on:
   schedule:
-    - cron: "0 8 * * *"  # Triggers every day at 08:00 UTC (11:00 Turkey time)
+    - cron: "0 8 * * *"  # Runs every day at 08:00 UTC (11:00 Turkey)
+  workflow_dispatch:      # Allows manual run from GitHub Actions tab
 
 jobs:
-  run-scraper:  # Job name 
-    runs-on: ubuntu-latest  # Uses GitHub's Ubuntu virtual machine
+  run-bot:
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout the repository  # Step 1: Pulls your repo code
+      - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Set up Python 3.11 
+      - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Run the bot script  
+      - name: Run job bot
         run: python job_bot.py
