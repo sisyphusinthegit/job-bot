@@ -1,3 +1,5 @@
+import os
+import urllib.request
 import json
 import requests
 import smtplib
@@ -6,11 +8,16 @@ from email.mime.multipart import MIMEMultipart
 from datetime import datetime, timedelta, timezone
 
 
-!rm config.json  # remove if any
-!wget https://raw.githubusercontent.com/sisyphusinthegit/job-bot/main/config.json # get the config file
+# Delete existing config.json if exists
+if os.path.exists("config.json"):
+    os.remove("config.json")
 
-# Create a function that loads the congif 
+# Download config.json from GitHub
+url = "https://raw.githubusercontent.com/sisyphusinthegit/job-bot/main/config.json"
+urllib.request.urlretrieve(url, "config.json")
 
+
+# Create a function that loads the config
 def load_config(path="config.json"):
     with open(path, "r") as f:
         return json.load(f)
